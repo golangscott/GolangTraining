@@ -13,6 +13,12 @@ type square struct {
 	side float64
 }
 
+type trangle struct {
+	a float64
+	b float64
+	c float64
+}
+
 type shape interface {
 	area() float64
 }
@@ -23,6 +29,10 @@ func (c circle) area() float64 {
 
 func (s square) area() float64 {
 	return s.side * s.side
+}
+
+func (t trangle) area() float64 {
+	return (t.a + t.b + t.c)/2
 }
 
 func info(z shape) {
@@ -42,7 +52,9 @@ func totalArea(shapes ...shape) float64 {
 func main() {
 	s := square{10}
 	c := circle{5}
+	t := trangle{3,4,5}
 	info(s)
 	info(c)
-	fmt.Println("Total Area: ", totalArea(c, s))
+	info(t)
+	fmt.Println("Total Area: ", totalArea(c, s, t))
 }
